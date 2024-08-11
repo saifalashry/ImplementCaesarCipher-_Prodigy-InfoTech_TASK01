@@ -1,0 +1,46 @@
+def encrypt(text, key):
+    key = key % 26
+    encrypted_text = ""
+    for char in text:
+        if char.isalpha():
+            index = (letters.index(char) + key) % len(letters)
+            encrypted_text += letters[index]
+        else:
+            encrypted_text += char
+    return encrypted_text
+
+def decrypt(text, key):
+    key = key % 26
+    decrypted_text = ""
+    for char in text:
+        if char.isalpha():
+            index = (letters.index(char) - key) % len(letters)
+            decrypted_text += letters[index]
+        else:
+            decrypted_text += char
+    return decrypted_text
+
+letters = 'abcdefghijklmnopqrstuvwxyz'
+
+while True:
+    print("Caesar Cipher Program For Encryption And Decryption.")
+    print("\nDo You Want To Encrypt, Decrypt, or Exit?")
+    user_input = input('e/d/x:').lower()
+
+    if user_input == 'e':
+        print("Encryption Mode Selected Successfully!")
+        key = int(input('Enter Your Key (1 to 26): '))
+        text = input('Enter The Text To Encrypt: ')
+        encrypted_text = encrypt(text, key)
+        print("Encrypted Text:", encrypted_text)
+    elif user_input == 'd':
+        print("Decryption Mode Selected Successfully!")
+        key = int(input('Enter Your Key (1 to 26): '))
+        text = input('Enter The Text To Decrypt: ')
+        decrypted_text = decrypt(text, key)
+        print("Decrypted Text:", decrypted_text)
+    elif user_input == 'x':
+        print("Exiting the program.")
+        break
+    else:
+        print("Invalid input. Please try again.")
